@@ -19,7 +19,16 @@
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>2.1.1.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+        <!-- SCM -->
+        <scm.module>qiot-manufacturing-all-parent</scm.module>
+        <project.scm.id>github</project.scm.id>
     </properties>
+    <scm>
+        <developerConnection>scm:git:https://github.com/qiot-project/${scm.module}.git/</developerConnection>
+        <url>https://github.com/qiot-project/${scm.module}</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -81,9 +90,74 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>3.2.3</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <publisher>
+                                <contextUrl>https://qiotproject.jfrog.io/artifactory</contextUrl>
+                                <username>stream-github-actions</username>
+                                <password>${env.ARTIFACTORY_TOKEN}</password>
+                                <repoKey>qiot-libs-release-local</repoKey>
+                                <snapshotRepoKey>qiot-libs-snapshot-local</snapshotRepoKey>
+                            </publisher>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <profiles>
+        <profile>
+            <id>github-actions</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_ENV</name>
+                    <value>github-actions</value>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>qiotproject-artifactory</id>
+                    <name>qiotproject-artifactory</name>
+                    <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>artifactory</id>
+                    <name>your-artifactory</name>
+                    <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
         <profile>
             <id>native</id>
             <activation>
