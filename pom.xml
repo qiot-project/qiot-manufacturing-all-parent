@@ -146,7 +146,7 @@
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
-                    <id>artifactory</id>
+                    <id>qiotproject-artifactory</id>
                     <name>your-artifactory</name>
                     <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
                     <releases>
