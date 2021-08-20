@@ -14,18 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v11
         with:
@@ -39,10 +40,10 @@ jobs:
             ]
       - name: Build with Maven
         env:
-           ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_username }}
+           ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
            ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
            BUILD_ENV: 'github-actions'
-        run: ./mvnw -B --update-snapshots package --file pom.xml
+        run: mvn -B -U package --file pom.xml
 
   release:
     runs-on: ubuntu-latest
@@ -50,18 +51,19 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
       - name: Setup Maven settings.xml
         uses: whelk-io/maven-settings-xml-action@v11
         with:
@@ -83,20 +85,20 @@ jobs:
         env:
           SCM_USERNAME_REF: 'github-actions'
           SCM_TOKEN_REF: ${{ secrets.GITHUB_TOKEN }}
-          ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_username }}
+          ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
           BUILD_ENV: 'github-actions'
         run: |
-          ./mvnw --batch-mode --update-snapshots release:prepare
+          ./mvnw --batch-mode release:prepare
       - name: Push the release
         env:
           SCM_USERNAME_REF: 'github-actions'
           SCM_TOKEN_REF: ${{ secrets.GITHUB_TOKEN }}
-          ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_username }}
+          ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
           ARTIFACTORY_TOKEN:  ${{ secrets.ARTIFACTORY_TOKEN }}
           BUILD_ENV: 'github-actions'
         run: ./mvnw --batch-mode release:perform
       - name: Rollback if failure
         if: ${{ failure() }}
-        run: ./mvnw --batch-mode --update-snapshots release:rollback
+        run: ./mvnw --batch-mode release:rollback
