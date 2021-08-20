@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.qiot.manufacturing</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
@@ -23,7 +23,7 @@
     <scm>
         <developerConnection>scm:git:https://github.com/qiot-project/${scm.module}.git/</developerConnection>
         <url>https://github.com/qiot-project/${scm.module}</url>
-        <tag>v1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <dependencyManagement>
