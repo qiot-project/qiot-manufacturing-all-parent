@@ -37,7 +37,7 @@ jobs:
             ]
       - name: Build with Maven
         env:
-           ARTIFACTORY_USERNAME_REF: "stream-github-actions"
+           ARTIFACTORY_USERNAME_REF: "qiotprojectmanufacturing"
            ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
            BUILD_ENV: 'github-actions'
         run: ./mvnw -B --update-snapshots package --file pom.xml
@@ -81,7 +81,7 @@ jobs:
         env:
           SCM_USERNAME_REF: 'github-actions'
           SCM_TOKEN_REF: ${{ secrets.GITHUB_TOKEN }}
-          ARTIFACTORY_USERNAME_REF: "stream-github-actions"
+          ARTIFACTORY_USERNAME_REF: "qiotprojectmanufacturing"
           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
           BUILD_ENV: 'github-actions'
         run: |
@@ -90,7 +90,7 @@ jobs:
         env:
           SCM_USERNAME_REF: 'github-actions'
           SCM_TOKEN_REF: ${{ secrets.GITHUB_TOKEN }}
-          ARTIFACTORY_USERNAME_REF: "stream-github-actions"
+          ARTIFACTORY_USERNAME_REF: "qiotprojectmanufacturing"
           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
           ARTIFACTORY_TOKEN:  ${{ secrets.ARTIFACTORY_TOKEN }}
           BUILD_ENV: 'github-actions'
