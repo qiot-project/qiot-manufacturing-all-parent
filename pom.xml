@@ -111,7 +111,7 @@
                         <configuration>
                             <publisher>
                                 <contextUrl>https://qiotproject.jfrog.io/artifactory</contextUrl>
-                                <username>stream-github-actions</username>
+                                <username>${env.ARTIFACTORY_USERNAME_REF}</username>
                                 <password>${env.ARTIFACTORY_TOKEN}</password>
                                 <repoKey>qiot-libs-release-local</repoKey>
                                 <snapshotRepoKey>qiot-libs-snapshot-local</snapshotRepoKey>
