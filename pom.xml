@@ -63,7 +63,6 @@
             <releases>
                 <enabled>false</enabled>
             </releases>
-
         </pluginRepository>
     </pluginRepositories>
 
@@ -153,29 +152,30 @@
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
-            <!-- <plugin> -->
-            <!-- <groupId>org.jfrog.buildinfo</groupId> -->
-            <!-- <artifactId>artifactory-maven-plugin</artifactId> -->
-            <!-- <version>3.2.3</version> -->
-            <!-- <inherited>false</inherited> -->
-            <!-- <executions> -->
-            <!-- <execution> -->
-            <!-- <id>build-info</id> -->
-            <!-- <goals> -->
-            <!-- <goal>publish</goal> -->
-            <!-- </goals> -->
-            <!-- <configuration> -->
-            <!-- <publisher> -->
-            <!-- <contextUrl>https://qiotproject.jfrog.io/artifactory</contextUrl> -->
-            <!-- <username>${env.ARTIFACTORY_USERNAME_REF}</username> -->
-            <!-- <password>${env.ARTIFACTORY_TOKEN}</password> -->
-            <!-- <repoKey>qiot-libs-release-local</repoKey> -->
-            <!-- <snapshotRepoKey>qiot-libs-snapshot-local</snapshotRepoKey> -->
-            <!-- </publisher> -->
-            <!-- </configuration> -->
-            <!-- </execution> -->
-            <!-- </executions> -->
-            <!-- </plugin> -->
+            <!-- ARTIFACTORY -->
+            <plugin>
+                <groupId>org.jfrog.buildinfo</groupId>
+                <artifactId>artifactory-maven-plugin</artifactId>
+                <version>3.2.3</version>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>build-info</id>
+                        <goals>
+                            <goal>publish</goal>
+                        </goals>
+                        <configuration>
+                            <publisher>
+                                <contextUrl>https://qiotproject.jfrog.io/artifactory</contextUrl>
+                                <username>${env.ARTIFACTORY_USERNAME_REF}</username>
+                                <password>${env.ARTIFACTORY_TOKEN}</password>
+                                <repoKey>qiot-libs-release-local</repoKey>
+                                <snapshotRepoKey>qiot-libs-snapshot-local</snapshotRepoKey>
+                            </publisher>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <profiles>
@@ -189,28 +189,38 @@
             </activation>
             <repositories>
                 <repository>
-                    <id>qiotproject-artifactory</id>
-                    <name>qiotproject-artifactory</name>
+                    <id>qiot-central</id>
+                    <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
                     <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
                     <snapshots>
-                        <enabled>true</enabled>
+                        <enabled>false</enabled>
                     </snapshots>
+                </repository>
+                <repository>
+                    <id>qiot-snapshots</id>
+                    <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
+                    <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-snapshot-local</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
                 </repository>
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
-                    <id>qiotproject-artifactory</id>
-                    <name>your-artifactory</name>
+                    <id>qiot-central</id>
+                    <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
                     <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
                     <snapshots>
-                        <enabled>true</enabled>
+                        <enabled>false</enabled>
                     </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>qiot-snapshots</id>
+                    <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
+                    <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-snapshot-local</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
                 </pluginRepository>
             </pluginRepositories>
         </profile>
