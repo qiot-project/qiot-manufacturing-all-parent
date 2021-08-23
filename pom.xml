@@ -168,7 +168,7 @@
                             <publisher>
                                 <contextUrl>https://qiotproject.jfrog.io/artifactory</contextUrl>
                                 <username>${env.ARTIFACTORY_USERNAME_REF}</username>
-                                <password>${env.ARTIFACTORY_TOKEN}</password>
+                                <password>${env.ARTIFACTORY_TOKEN_REF}</password>
                                 <repoKey>qiot-libs-release-local</repoKey>
                                 <snapshotRepoKey>qiot-libs-snapshot-local</snapshotRepoKey>
                             </publisher>
