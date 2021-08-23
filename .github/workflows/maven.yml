@@ -33,7 +33,12 @@ jobs:
           servers: |
             [
               {
-                "id": "qiotproject-artifactory",
+                "id": "qiot-central",
+                "username": "${env.ARTIFACTORY_USERNAME_REF}",
+                "password": "${env.ARTIFACTORY_TOKEN_REF}"
+              },
+              {
+                "id": "qiot-snapshots",
                 "username": "${env.ARTIFACTORY_USERNAME_REF}",
                 "password": "${env.ARTIFACTORY_TOKEN_REF}"
               }
@@ -42,5 +47,5 @@ jobs:
         env:
            ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
            ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
-           BUILD_ENV: 'github-actions'
-        run: mvn -B -U package --file pom.xml
+           # BUILD_ENV: 'github-actions'
+        run: mvn -B deploy
