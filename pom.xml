@@ -19,8 +19,8 @@
         <quarkus.platform.version>2.1.3.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <!-- SCM -->
-<!--         <scm.module>qiot-manufacturing-all-parent</scm.module> -->
-<!--         <project.scm.id>github</project.scm.id> -->
+        <!-- <scm.module>qiot-manufacturing-all-parent</scm.module> -->
+        <!-- <project.scm.id>github</project.scm.id> -->
     </properties>
     <scm>
         <connection>scm:git:https://github.com/qiot-project/qiot-manufacturing-all-parent.git</connection>
@@ -96,36 +96,36 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-        <dependency>
-            <groupId>io.qiot.manufacturing.all</groupId>
-            <artifactId>domain-model</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qiot.manufacturing.factory</groupId>
-            <artifactId>domain-model</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qiot.manufacturing.datacenter</groupId>
-            <artifactId>domain-model</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qiot.manufacturing.all</groupId>
-            <artifactId>utilities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qiot.manufacturing.factory</groupId>
-            <artifactId>utilities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qiot.manufacturing.datacenter</groupId>
-            <artifactId>utilities</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
+            <dependency>
+                <groupId>io.qiot.manufacturing.all</groupId>
+                <artifactId>domain-model</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.qiot.manufacturing.factory</groupId>
+                <artifactId>domain-model</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.qiot.manufacturing.datacenter</groupId>
+                <artifactId>domain-model</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.qiot.manufacturing.all</groupId>
+                <artifactId>utilities</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.qiot.manufacturing.factory</groupId>
+                <artifactId>utilities</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.qiot.manufacturing.datacenter</groupId>
+                <artifactId>utilities</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
