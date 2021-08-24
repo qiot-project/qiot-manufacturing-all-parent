@@ -19,12 +19,12 @@
         <quarkus.platform.version>2.1.3.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <!-- SCM -->
-        <scm.module>qiot-manufacturing-all-parent</scm.module>
-        <project.scm.id>github</project.scm.id>
+<!--         <scm.module>qiot-manufacturing-all-parent</scm.module> -->
+<!--         <project.scm.id>github</project.scm.id> -->
     </properties>
     <scm>
-        <connection>scm:git:https://github.com/qiot-project/${scm.module}.git</connection>
-        <developerConnection>scm:git:https://github.com/qiot-project/${scm.module}.git/</developerConnection>
+        <connection>scm:git:https://github.com/qiot-project/qiot-manufacturing-all-parent.git</connection>
+        <developerConnection>scm:git:https://github.com/qiot-project/qiot-manufacturing-all-parent.git/</developerConnection>
         <url>https://github.com/qiot-project/${scm.module}</url>
         <tag>HEAD</tag>
     </scm>
