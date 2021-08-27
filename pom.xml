@@ -25,7 +25,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/qiot-project/qiot-manufacturing-all-parent.git</connection>
 		<developerConnection>scm:git:https://github.com/qiot-project/qiot-manufacturing-all-parent.git/</developerConnection>
-		<url>https://github.com/qiot-project/${scm.module}</url>
+		<url>https://github.com/qiot-project/qiot-manufacturing-all-parent</url>
 		<tag>HEAD</tag>
 	</scm>
 	<repositories>
@@ -180,7 +180,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>3.0.0-M4</version>
 				<configuration>
-					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<tagNameFormat>@{project.version}</tagNameFormat>
 				</configuration>
 			</plugin>
 			<!-- ARTIFACTORY -->
