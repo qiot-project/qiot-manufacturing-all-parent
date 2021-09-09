@@ -19,6 +19,7 @@
         <quarkus.platform.version>2.2.1.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <lombok.version>1.18.20</lombok.version>
+        <influxdb.client.version>3.2.0</influxdb.client.version>
         <!-- SCM -->
         <!-- <scm.module>qiot-manufacturing-all-parent</scm.module> -->
         <!-- <project.scm.id>github</project.scm.id> -->
@@ -100,6 +101,38 @@
         </dependencies>
     </dependencyManagement>
     <build>
+    
+    <pluginManagement>
+        <plugins>
+            <!--This plugin's configuration is used to store Eclipse m2e 
+                settings only. It has no influence on the Maven build itself. -->
+            <plugin>
+                <groupId>org.eclipse.m2e</groupId>
+                <artifactId>lifecycle-mapping</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>org.codehaus.mojo</groupId>
+                                    <artifactId>aspectj-maven-plugin</artifactId>
+                                    <versionRange>[1.0,)</versionRange>
+                                    <goals>
+                                        <goal>test-compile</goal>
+                                        <goal>compile</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <execute />
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
+                </configuration>
+            </plugin>
+        </plugins>
+    </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.jboss.jandex</groupId>
