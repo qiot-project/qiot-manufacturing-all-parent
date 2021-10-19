@@ -1,2 +1,3 @@
 # qiot-manufacturing-all-parent
-Parent Project
+
+Parent Project for Manufacturing usecase
