@@ -3,10 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.qiot.manufacturing</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <release-plugin.version>3.0.0-M6</release-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -14,7 +15,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
-        <quarkus.platform.version>2.3.0.Final</quarkus.platform.version>
+        <quarkus.platform.version>2.9.2.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
         <lombok.version>1.18.20</lombok.version>
         <influxdb.client.version>3.2.0</influxdb.client.version>
@@ -32,7 +33,7 @@
         <repository>
             <id>qiot-central</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
-            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
+            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_RELEASE_REPO}</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -40,7 +41,7 @@
         <repository>
             <id>qiot-snapshots</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
-            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-snapshot-local</url>
+            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_SNAPSHOT_REPO}</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -51,7 +52,7 @@
         <pluginRepository>
             <id>qiot-central</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
-            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
+            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_RELEASE_REPO}</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -59,7 +60,7 @@
         <pluginRepository>
             <id>qiot-snapshots</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
-            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-snapshot-local</url>
+            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_SNAPSHOT_REPO}</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -70,7 +71,7 @@
         <repository>
             <id>qiot-central</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
-            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-release-local</url>
+            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_RELEASE_REPO}</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -78,7 +79,7 @@
         <snapshotRepository>
             <id>qiot-snapshots</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
-            <url>https://qiotproject.jfrog.io/artifactory/qiot-libs-snapshot-local</url>
+            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_SNAPSHOT_REPO}</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -89,7 +90,7 @@
             <dependency>
                 <groupId>io.qiot.ubi</groupId>
                 <artifactId>parent</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.3</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -162,7 +163,7 @@
 
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M4</version>
+                <version>${release-plugin.version}</version>
                 <configuration>
                     <tagNameFormat>@{project.version}</tagNameFormat>
                 </configuration>
@@ -181,11 +182,11 @@
                         </goals>
                         <configuration>
                             <publisher>
-                                <contextUrl>https://qiotproject.jfrog.io/artifactory</contextUrl>
+                                <contextUrl>https://${env.ARTIFACTORY_HOSTNAME}/artifactory</contextUrl>
                                 <username>${env.ARTIFACTORY_USERNAME_REF}</username>
                                 <password>${env.ARTIFACTORY_TOKEN_REF}</password>
-                                <repoKey>qiot-libs-release-local</repoKey>
-                                <snapshotRepoKey>qiot-libs-snapshot-local</snapshotRepoKey>
+                                <repoKey>${env.ARTIFACTORY_RELEASE_REPO}</repoKey>
+                                <snapshotRepoKey>${env.ARTIFACTORY_SNAPSHOT_REPO}</snapshotRepoKey>
                             </publisher>
                         </configuration>
                     </execution>
