@@ -29,11 +29,12 @@
         <url>https://github.com/qiot-project/qiot-manufacturing-all-parent</url>
         <tag>HEAD</tag>
     </scm>
+    
     <repositories>
         <repository>
             <id>qiot-central</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
-            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_RELEASE_REPO}</url>
+            <url>https://hackfest.jfrog.io/artifactory/hackfest-libs-release</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -41,7 +42,7 @@
         <repository>
             <id>qiot-snapshots</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
-            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_SNAPSHOT_REPO}</url>
+            <url>https://hackfest.jfrog.io/artifactory/hackfest-libs-snapshot</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -52,7 +53,7 @@
         <pluginRepository>
             <id>qiot-central</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
-            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_RELEASE_REPO}</url>
+            <url>https://hackfest.jfrog.io/artifactory/hackfest-libs-release</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -60,7 +61,7 @@
         <pluginRepository>
             <id>qiot-snapshots</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
-            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_SNAPSHOT_REPO}</url>
+            <url>https://hackfest.jfrog.io/artifactory/hackfest-libs-snapshot</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
@@ -71,7 +72,7 @@
         <repository>
             <id>qiot-central</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-releases</name>
-            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_RELEASE_REPO}</url>
+            <url>https://hackfest.jfrog.io/artifactory/hackfest-libs-release</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -79,18 +80,19 @@
         <snapshotRepository>
             <id>qiot-snapshots</id>
             <name>a0lz61zjcqpyh-artifactory-primary-0-snapshots</name>
-            <url>https://${env.ARTIFACTORY_HOSTNAME}/artifactory/${env.ARTIFACTORY_SNAPSHOT_REPO}</url>
+            <url>https://hackfest.jfrog.io/artifactory/hackfest-libs-snapshot</url>
             <releases>
                 <enabled>false</enabled>
             </releases>
         </snapshotRepository>
     </distributionManagement>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.qiot.ubi</groupId>
                 <artifactId>parent</artifactId>
-                <version>1.0.3</version>
+                <version>1.0.4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -182,11 +184,11 @@
                         </goals>
                         <configuration>
                             <publisher>
-                                <contextUrl>https://${env.ARTIFACTORY_HOSTNAME}/artifactory</contextUrl>
+                                <contextUrl>https://hackfest.jfrog.io/artifactory</contextUrl>
                                 <username>${env.ARTIFACTORY_USERNAME_REF}</username>
                                 <password>${env.ARTIFACTORY_TOKEN_REF}</password>
-                                <repoKey>${env.ARTIFACTORY_RELEASE_REPO}</repoKey>
-                                <snapshotRepoKey>${env.ARTIFACTORY_SNAPSHOT_REPO}</snapshotRepoKey>
+                                <repoKey>hackfest-libs-release</repoKey>
+                                <snapshotRepoKey>hackfest-libs-snapshot</snapshotRepoKey>
                             </publisher>
                         </configuration>
                     </execution>
