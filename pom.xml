@@ -17,8 +17,11 @@
         <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
         <quarkus.platform.version>2.9.2.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M5</surefire-plugin.version>
+        <source-plugin.version>3.2.0</source-plugin.version>
+        <javadoc-plugin.version>3.4.0</javadoc-plugin.version>
         <lombok.version>1.18.20</lombok.version>
         <influxdb.client.version>3.2.0</influxdb.client.version>
+        <jkube.version>1.8.0</jkube.version>
         <!-- SCM -->
         <!-- <scm.module>qiot-manufacturing-all-parent</scm.module> -->
         <!-- <project.scm.id>github</project.scm.id> -->
@@ -162,7 +165,16 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${source-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>${release-plugin.version}</version>
