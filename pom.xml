@@ -6,6 +6,7 @@
     <version>1.0.8-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
+        <qiot-parent.version>1.0.5</qiot-parent.version>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
         <release-plugin.version>3.0.0-M6</release-plugin.version>
         <maven.compiler.parameters>true</maven.compiler.parameters>
@@ -22,6 +23,8 @@
         <lombok.version>1.18.20</lombok.version>
         <influxdb.client.version>3.2.0</influxdb.client.version>
         <jkube.version>1.8.0</jkube.version>
+        <jandex-plugin.version>1.2.2</jandex-plugin.version>
+        <artifactory-plugin.version>3.2.3</artifactory-plugin.version>
         <!-- SCM -->
         <!-- <scm.module>qiot-manufacturing-all-parent</scm.module> -->
         <!-- <project.scm.id>github</project.scm.id> -->
@@ -32,7 +35,7 @@
         <url>https://github.com/qiot-project/qiot-manufacturing-all-parent</url>
         <tag>HEAD</tag>
     </scm>
-    
+
     <repositories>
         <repository>
             <id>qiot-central</id>
@@ -89,13 +92,13 @@
             </releases>
         </snapshotRepository>
     </distributionManagement>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.qiot.ubi</groupId>
                 <artifactId>parent</artifactId>
-                <version>1.0.4</version>
+                <version>${qiot-parent.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -118,12 +121,12 @@
             <plugin>
                 <groupId>org.eclipse.jkube</groupId>
                 <artifactId>openshift-maven-plugin</artifactId>
-                <version>1.3.0</version>
+                <version>${jkube.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
-                <version>1.2.0</version>
+                <version>${jandex-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>make-index</id>
@@ -173,7 +176,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>${javadoc-plugin.version}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-release-plugin</artifactId>
@@ -186,7 +189,7 @@
             <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>
                 <artifactId>artifactory-maven-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>${artifactory-plugin.version}</version>
                 <inherited>false</inherited>
                 <executions>
                     <execution>
