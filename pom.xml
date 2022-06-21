@@ -21,6 +21,7 @@
         <javadoc-plugin.version>3.4.0</javadoc-plugin.version>
         <lombok.version>1.18.20</lombok.version>
         <influxdb.client.version>3.2.0</influxdb.client.version>
+        <jkube.version>1.8.0</jkube.version>
         <!-- SCM -->
         <!-- <scm.module>qiot-manufacturing-all-parent</scm.module> -->
         <!-- <project.scm.id>github</project.scm.id> -->
